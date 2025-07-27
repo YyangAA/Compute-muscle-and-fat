@@ -104,7 +104,6 @@ if __name__ == '__main__':
     preprocessing_liver(volumes_train, False, save_path_Judge, data_path, tumor=False, pos=1)
     preprocessing_liver(volumes_train, False, save_path_Seg, data_path, tumor=False, pos=2)
     
-    print("1")
     #L3分类
     model_path = "./pipeline/model_path/best_model_class.pth"
     image_folder = "./pipeline/demo/save_class"  # 推理用图像目录（不含标签）
@@ -176,20 +175,20 @@ if __name__ == '__main__':
             slice_data = img_data[0]  # 取出唯一一张切片
             # print('slice_data',img_data.shape,slice_data)
             count = np.sum(slice_data > 150)  # 统计 HU > 150 的像素数
-            print(f"文件: {file}, HU>150 像素数: {count}")
+            # print(f"文件: {file}, HU>150 像素数: {count}")
 
             if count > max_global_count:
                 max_global_count = count
                 best_global_file = file
                 best_global_i = i  # 记录对应的 i
 
-        print("HU 值大于 150 像素最多的图像：")
-        print(f"文件: {best_global_file}, 对应 L3 中的索引: {best_global_i}")
-        print(f"原始标注文件名（来自 results）: {L3_map[best_global_i]}")
-        print(f"HU > 150 像素数: {max_global_count}")
+        # print("HU 值大于 150 像素最多的图像：")
+        # print(f"文件: {best_global_file}, 对应 L3 中的索引: {best_global_i}")
+        # print(f"原始标注文件名（来自 results）: {L3_map[best_global_i]}")
+        # print(f"HU > 150 像素数: {max_global_count}")
 
         keep_filename = L3_map[best_global_i]
-        print(f"保留文件: {keep_filename}")
+        # print(f"保留文件: {keep_filename}")
 
         # 遍历 save_path_Seg 下的所有文件
         for fname in os.listdir(save_path_Seg):

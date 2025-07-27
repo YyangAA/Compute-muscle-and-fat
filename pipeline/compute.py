@@ -97,7 +97,7 @@ def infer_density_area(dicom_dir, test_img_dir, pred_mask_dir, image_array, file
         # 原图和预测mask
         # img = cv2.imread(img_path, cv2.IMREAD_GRAYSCALE)
         img_tensor = torch.from_numpy(image_array).unsqueeze(0).float()
-        print("img",img_tensor.max(),img_tensor.min())
+        # print("img",img_tensor.max(),img_tensor.min())
         # img_tensor = torch.from_numpy(img).unsqueeze(0).unsqueeze(0).float()
 
         mask_path = os.path.join(pred_mask_dir, new_filename)
